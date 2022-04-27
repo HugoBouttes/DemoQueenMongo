@@ -7,9 +7,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - DemoQueenMongo.dev.insee.io
+        - demoqueenmongo.dev.insee.io
   rules:
-    - host: DemoQueenMongo.dev.insee.io
+    - host: demoqueenmongo.dev.insee.io
       http:
         paths:
           - path: /
