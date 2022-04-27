@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: demo
@@ -14,4 +14,6 @@ spec:
     spec:
       containers:
         - name: demo
-          image: tomcat:9.0.29
+          image:  BouttesINSEE/DemoQueenMongo
+          ports: 
+            - containerPort: 8000
