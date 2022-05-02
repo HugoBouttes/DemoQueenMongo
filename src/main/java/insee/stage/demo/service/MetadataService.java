@@ -3,7 +3,9 @@ package insee.stage.demo.service;
 
 import insee.stage.demo.model.Metadata;
 import insee.stage.demo.repository.MetadataRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MetadataService {
 
     private final MetadataRepository metadatarepository ;
