@@ -2,8 +2,11 @@ package insee.stage.demo.service;
 
 
 import insee.stage.demo.model.Metadata;
+import insee.stage.demo.model.Paradata;
 import insee.stage.demo.repository.MetadataRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MetadataService {
@@ -33,6 +36,10 @@ public class MetadataService {
     public Metadata getMetadataById(String id){
         return metadatarepository.findById(id).orElseThrow(() -> new RuntimeException(
                 String.format("Cannot fin survey units by Id %s", id)));
+    }
+
+    public List<Metadata> getAllMetadata() {
+        return metadatarepository.findAll();
     }
 
 }

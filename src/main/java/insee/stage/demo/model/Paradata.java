@@ -2,8 +2,11 @@ package insee.stage.demo.model;
 
 import org.json.JSONObject;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+
+@Document("paradata")
 public class Paradata {
 
     @Id

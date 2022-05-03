@@ -11,9 +11,7 @@ import org.springframework.context.annotation.Import;
 @SpringBootApplication
 public class SpringBootMongodbTutorialApplication {
 
-
     public static void main(String[] args) {
         SpringApplication.run(SpringBootMongodbTutorialApplication.class, args);
     }
-
 }
