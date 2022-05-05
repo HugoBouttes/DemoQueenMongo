@@ -38,10 +38,46 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: latest
-          release_name: Release ${{steps.version.outputs.prop}}
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
+
+  publish:
+    if: contains(github.ref, 'tags/v')
+    needs: [ test, release ]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [ foo, bar, baz ]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Load Release URL File from release job
+        uses: actions/download-artifact@v1
+        with:
+          name: release_url
+      - name: Build
+        run: BUILD_COMMAND --version ${{ matrix.version }} --output ./${{ matrix.version }}
+          zip -r ${{ matrix.version }} ./${{ matrix.version }}
+      - name: Get Release File Name & Upload URL
+        id: get_release_info
+        run: |
+          echo ::set-output name=file_name::${REPOSITORY_NAME##*/}-${TAG_REF_NAME##*/v} # RepositoryName-v1.0.0
+          value=`cat release_url/release_url.txt`
+          echo ::set-output name=upload_url::$value
+        env:
+          TAG_REF_NAME: ${{ github.ref }}
+          REPOSITORY_NAME: ${{ github.repository }}
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.get_release_info.outputs.upload_url }}
+          asset_path: ./${{ matrix.rid }}.zip
+          asset_name: ${{ steps.get_release_info.outputs.file_name }}-${{ matrix.rid }}.zip
+          asset_content_type: application/zip
   docker:
     needs: build
     runs-on: ubuntu-latest
