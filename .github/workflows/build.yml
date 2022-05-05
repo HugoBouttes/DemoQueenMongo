@@ -32,9 +32,9 @@ jobs:
         id: version
         run: echo "::set-output name=prop::$(mvn -f pom.xml help:evaluate -Dexpression=project.version -q -DforceStdout)"
       - run: echo ${{steps.version.outputs.prop}}
-      - name: Release snapshot
-        id: release-snapshot
-        uses: actions/create-release@latest
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
