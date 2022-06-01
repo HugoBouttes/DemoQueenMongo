@@ -13,13 +13,11 @@ public class NomenclatureService {
             this.nomenclatureRepository = nomenclatureRepository;
         }
 
-        public void addParadata(Nomenclature nomenclature) {
-            NomenclatureRepository.insert(nomenclature);
+        public void addNomenclature(Nomenclature nomenclature) {
+            nomenclatureRepository.insert(nomenclature);
         }
 
         public List<Nomenclature> getAllNomenclature() {
             return nomenclatureRepository.findAll();
         }
-
-
 }
