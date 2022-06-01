@@ -1,5 +1,6 @@
 package insee.stage.demo.controller;
 
+import insee.stage.demo.model.Metadata;
 import insee.stage.demo.model.Nomenclature;
 import insee.stage.demo.service.NomenclatureService;
 import org.springframework.http.HttpStatus;
@@ -16,9 +17,14 @@ public class NomenclatureController {
     public NomenclatureController(NomenclatureService nomenclatureService){
         this.nomenclatureService = nomenclatureService;
     }
-    
+
     @GetMapping
     public ResponseEntity<List<Nomenclature>> getAllExpenses() {
         return ResponseEntity.ok(nomenclatureService.getAllNomenclature());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Nomenclature> getNomenclatureById(@PathVariable String id) {
+        return ResponseEntity.ok(nomenclatureService.getNomenclatureById(id));
     }
 }
