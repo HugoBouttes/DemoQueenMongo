@@ -1,0 +1,24 @@
+package insee.stage.demo.controller;
+
+import insee.stage.demo.model.Nomenclature;
+import insee.stage.demo.service.NomenclatureService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/nomenclature")
+public class NomenclatureController {
+    private final NomenclatureService nomenclatureService;
+
+    public NomenclatureController(NomenclatureService nomenclatureService){
+        this.nomenclatureService = nomenclatureService;
+    }
+    
+    @GetMapping
+    public ResponseEntity<List<Nomenclature>> getAllExpenses() {
+        return ResponseEntity.ok(nomenclatureService.getAllNomenclature());
+    }
+}
