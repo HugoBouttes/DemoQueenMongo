@@ -4,7 +4,7 @@ import org.json.JSONObject;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
+import insee.stage.demo.model.InseeContext;
 
 @Document("metadata")
 public class Metadata {

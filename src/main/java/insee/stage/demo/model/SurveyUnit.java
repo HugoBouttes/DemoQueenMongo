@@ -73,5 +73,5 @@ public class SurveyUnit {
 
 
     public void setStateData(Statedata stateData) {
-    }
+        this.stateData = stateData;}
 }

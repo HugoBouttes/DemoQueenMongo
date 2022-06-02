@@ -1,8 +1,8 @@
 package insee.stage.demo.model;
 
 import org.json.JSONObject;
-
 import java.util.Date;
+import insee.stage.demo.model.State;
 
 public class Statedata {
     private State state;
