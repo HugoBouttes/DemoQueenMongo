@@ -5,7 +5,7 @@ on:
     branches:
       - 'main'
     tags:
-      - 'SNAPSHOT:0.0.2'
+      - '*'
 
 jobs:
   build:
