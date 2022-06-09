@@ -1,5 +1,8 @@
 package insee.stage.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.json.JSONObject;
 import org.springframework.data.annotation.Id;
 /**import org.springframework.data.mongodb.core.index.Indexed;**/
@@ -15,23 +18,17 @@ public class SurveyUnit {
 
     @Id
     private String id;
-    @Field(name = "comment")
-    private String comment;
-    @Field(name = "personalization")
-    private JSONObject personalization;
     @Field(name = "state-data")
-    private Statedata stateData;
+    private Statedata statedata;
+    @Field(name = "paradata")
+    private Paradata paradata;
     @Field(name = "data")
     private  JSONObject data;
 
-
-
-
-    public SurveyUnit(String id, String comment, JSONObject personalization, Statedata stateData, JSONObject data) {
+    public SurveyUnit(String id, Statedata statedata, Paradata paradata, JSONObject data) {
         this.id = id;
-        this.comment = comment;
-        this.personalization = personalization;
-        this.stateData = stateData;
+        this.statedata = statedata;
+        this.paradata = paradata;
         this.data = data;
     }
 
@@ -43,24 +40,20 @@ public class SurveyUnit {
         this.id = id;
     }
 
-    public String getComment() {
-        return comment;
+    public Statedata getStatedata() {
+        return statedata;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setStatedata(Statedata statedata) {
+        this.statedata = statedata;
     }
 
-    public JSONObject getPersonalization() {
-        return personalization;
+    public Paradata getParadata() {
+        return paradata;
     }
 
-    public void setPersonalization(JSONObject personalization) {
-        this.personalization = personalization;
-    }
-
-    public Statedata getStateData() {
-        return stateData;
+    public void setParadata(Paradata paradata) {
+        this.paradata = paradata;
     }
 
     public JSONObject getData() {
@@ -71,7 +64,4 @@ public class SurveyUnit {
         this.data = data;
     }
 
-
-    public void setStateData(Statedata stateData) {
-        this.stateData = stateData;}
 }

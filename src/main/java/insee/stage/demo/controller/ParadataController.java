@@ -26,6 +26,7 @@ public class ParadataController {
     public ResponseEntity<List<Paradata>> getAllExpenses() {
         return ResponseEntity.ok(paradataService.getAllParadata());
     }
+
     /** POST paradata **/
 
     @PostMapping

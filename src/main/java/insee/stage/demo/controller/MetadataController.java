@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/metadata")
+@RequestMapping("/api")
 public class MetadataController {
     private final MetadataService metadataService;
 
@@ -21,13 +21,15 @@ public class MetadataController {
         this.metadataService = metadataService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<Metadata>> getAllExpenses() {
+    @GetMapping("metadata")
+    public ResponseEntity<List<Metadata>> getAllMetadata() {
         return ResponseEntity.ok(metadataService.getAllMetadata());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("campaign/{id}/metadata")
     public ResponseEntity<Metadata> getMetadataById(@PathVariable String id) {
         return ResponseEntity.ok(metadataService.getMetadataById(id));
     }
+
+
 }

@@ -1,80 +1,43 @@
 package insee.stage.demo.service;
 
-import insee.stage.demo.model.SurveyUnit;
+import insee.stage.demo.model.Paradata;
+import insee.stage.demo.model.Required_nomenclatures;
 import insee.stage.demo.model.Statedata;
+import insee.stage.demo.model.SurveyUnit;
+import insee.stage.demo.repository.RequiredNomenclatureRepository;
 import insee.stage.demo.repository.SurveyUnitRepository;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
+import javax.xml.crypto.Data;
 import java.util.List;
+
 
 @Service
 public class SurveyUnitService {
 
     private final SurveyUnitRepository surveyUnitRepository;
 
-    public SurveyUnitService(SurveyUnitRepository surveyUnitRepository) {
+    public SurveyUnitService(SurveyUnitRepository surveyUnitRepository){
         this.surveyUnitRepository = surveyUnitRepository;
     }
 
-    public void addExpense(SurveyUnit surveyUnit) {
-        surveyUnitRepository.insert(surveyUnit);
-    }
-
-
-
-
-    public void updateExpense(SurveyUnit surveyUnit) {
-        SurveyUnit savedSurveyUnit = surveyUnitRepository.findById(surveyUnit.getId()).orElseThrow(() -> new RuntimeException(
-                String.format("Cannot find survey units by ID %s", surveyUnit.getId())));
-
-        savedSurveyUnit.setComment(surveyUnit.getComment());
-        savedSurveyUnit.setData(surveyUnit.getData());
-        savedSurveyUnit.setPersonalization(surveyUnit.getPersonalization());
-        savedSurveyUnit.setStateData(surveyUnit.getStateData());
-
-        surveyUnitRepository.save(surveyUnit);
-    }
-
-
-    public void updateExpenseData(SurveyUnit surveyUnit, JSONObject data) {
-        surveyUnit.setData(data);
-        surveyUnitRepository.save(surveyUnit);
-    }
-
-    public void updateExpenseComment(SurveyUnit surveyUnit, String comment) {
-        surveyUnit.setComment(comment);
-        surveyUnitRepository.save(surveyUnit);
-    }
-
-    public void updateExpenseStateData(SurveyUnit surveyUnit, Statedata stateData) {
-        surveyUnit.setStateData(stateData);
-        surveyUnitRepository.save(surveyUnit);
-    }
-
-    public void updateExpensePersonalization(SurveyUnit surveyUnit, JSONObject personalization) {
-        surveyUnit.setPersonalization(personalization);
-        surveyUnitRepository.save(surveyUnit);
-    }
-
-
-    public List<SurveyUnit> getAllExpenses() {
+    public List<SurveyUnit> getAllSurveyUnit() {
         return surveyUnitRepository.findAll();
     }
 
-    public SurveyUnit getExpenseByName(String name) {
-        return surveyUnitRepository.findByName(name).orElseThrow(() -> new RuntimeException(
-                String.format("Cannot fin survey units by name %s", name)));
-
-    }
-
-    public SurveyUnit getExpenseById(String id) {
+    public SurveyUnit getSurveyUnitById(String id){
         return surveyUnitRepository.findById(id).orElseThrow(() -> new RuntimeException(
                 String.format("Cannot fin survey units by Id %s", id)));
     }
-
-    public void deleteExpense(String id) {
-        surveyUnitRepository.deleteById(id);
-
+    public void updateSurveyUnitStateData(SurveyUnit surveyUnit, Statedata stateData) {
+        surveyUnit.setStatedata(stateData);
+        surveyUnitRepository.save(surveyUnit);
     }
+
+    public void updateSurveyUnitData(SurveyUnit surveyUnit, JSONObject data) {
+        surveyUnit.setData(data);
+        surveyUnitRepository.save(surveyUnit);
+    }
+    
 }
