@@ -27,7 +27,6 @@ public class SurveyUnitController {
         this.surveyUnitService = surveyUnitService;
     }
 
-    @Autowired
     /** GET Required Nomenclature **/
     @GetMapping
     public ResponseEntity<List<SurveyUnit>> getAllSurveyUnit() {
