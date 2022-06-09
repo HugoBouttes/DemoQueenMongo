@@ -1,32 +1,33 @@
-package insee.stage.demo.controller;
+package insee.stage.demo.model;
 
-import insee.stage.demo.model.Nomenclature;
-import insee.stage.demo.service.NomenclatureService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.json.JSONObject;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.util.List;
+public class Nomenclature {
+    @Id
+    private String id;
+    @Field(name = "nomenclature")
+    private JSONObject nomenclature;
 
-    @RestController
-    @RequestMapping("/api/nomenclature")
-    public class NomenclatureController {
-        private final NomenclatureService nomenclatureService;
-
-        public NomenclatureController(NomenclatureService nomenclatureService){
-            this.nomenclatureService = nomenclatureService;
-        }
-
-        @GetMapping
-        public ResponseEntity<List<Nomenclature>> getAllExpenses() {
-            return ResponseEntity.ok(nomenclatureService.getAllNomenclature());
-        }
-
-        @GetMapping("/{id}")
-        public ResponseEntity<Nomenclature> getNomenclatureById(@PathVariable String id) {
-            return ResponseEntity.ok(nomenclatureService.getNomenclatureById(id));
-        }
+    public Nomenclature(String id, JSONObject nomenclature) {
+        this.id = id;
+        this.nomenclature = nomenclature;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public JSONObject getNomenclature() {
+        return nomenclature;
+    }
+
+    public void setNomenclature(JSONObject nomenclature) {
+        this.nomenclature = nomenclature;
+    }
+}
