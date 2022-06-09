@@ -56,9 +56,9 @@ public class SurveyUnitController {
 
 
 
-    @DeleteMapping("/{id}")
+    /** @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteExpense(@PathVariable String  id) {
         surveyUnitService.deleteExpense(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-    }
+    } **/
 }
