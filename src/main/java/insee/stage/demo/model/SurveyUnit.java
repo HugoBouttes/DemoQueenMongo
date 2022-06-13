@@ -23,10 +23,9 @@ public class SurveyUnit {
     @Field(name = "data")
     private  JSONObject data;
 
-    public SurveyUnit(String id, Statedata statedata, Paradata paradata, JSONObject data) {
+    public SurveyUnit(String id, Statedata statedata, JSONObject data) {
         this.id = id;
         this.statedata = statedata;
-        this.paradata = paradata;
         this.data = data;
     }
 

@@ -30,7 +30,7 @@ public class ParadataController {
     /** POST paradata **/
 
     @PostMapping
-    public ResponseEntity addParadataById(@RequestBody Paradata paradata, @RequestBody String Id) {
+    public ResponseEntity addParadataById(@RequestBody Paradata paradata) {
         paradataService.addParadata(paradata);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
