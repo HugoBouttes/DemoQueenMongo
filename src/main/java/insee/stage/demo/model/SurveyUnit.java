@@ -20,8 +20,6 @@ public class SurveyUnit {
     private String id;
     @Field(name = "state-data")
     private Statedata statedata;
-    @Field(name = "paradata")
-    private Paradata paradata;
     @Field(name = "data")
     private  JSONObject data;
 
@@ -46,14 +44,6 @@ public class SurveyUnit {
 
     public void setStatedata(Statedata statedata) {
         this.statedata = statedata;
-    }
-
-    public Paradata getParadata() {
-        return paradata;
-    }
-
-    public void setParadata(Paradata paradata) {
-        this.paradata = paradata;
     }
 
     public JSONObject getData() {
