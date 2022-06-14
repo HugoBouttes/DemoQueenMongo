@@ -39,5 +39,5 @@ public class Statedata {
     public void setCurrentPage(int currentPage) {
         this.currentPage = currentPage;
     }
-    
+
 }

@@ -3,6 +3,8 @@ package insee.stage.demo.model;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.mongodb.util.JSON;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.data.annotation.Id;
 /**import org.springframework.data.mongodb.core.index.Indexed;**/
@@ -21,9 +23,9 @@ public class SurveyUnit {
     @Field(name = "state-data")
     private Statedata statedata;
     @Field(name = "data")
-    private  JSONObject data;
+    private JSONArray data;
 
-    public SurveyUnit(String id, Statedata statedata, JSONObject data) {
+    public SurveyUnit(String id, Statedata statedata, JSONArray data) {
         this.id = id;
         this.statedata = statedata;
         this.data = data;
@@ -45,11 +47,12 @@ public class SurveyUnit {
         this.statedata = statedata;
     }
 
-    public JSONObject getData() {
+
+    public JSONArray getData() {
         return data;
     }
 
-    public void setData(JSONObject data) {
+    public void setData(JSONArray data) {
         this.data = data;
     }
 

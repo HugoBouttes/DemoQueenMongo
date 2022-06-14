@@ -23,15 +23,15 @@ public class ParadataController {
 
 
     @GetMapping
-    public ResponseEntity<List<Paradata>> getAllExpenses() {
+    public ResponseEntity<List<Paradata>> getAllParadata() {
         return ResponseEntity.ok(paradataService.getAllParadata());
     }
 
     /** POST paradata **/
 
     @PostMapping
-    public ResponseEntity addParadataById(@RequestBody Paradata paradata) {
+    public ResponseEntity<Paradata> addParadata(@RequestBody Paradata paradata) {
         paradataService.addParadata(paradata);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return (ResponseEntity<Paradata>) ResponseEntity.status(HttpStatus.CREATED);
     }
 }

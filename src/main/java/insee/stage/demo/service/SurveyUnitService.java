@@ -6,6 +6,7 @@ import insee.stage.demo.model.Statedata;
 import insee.stage.demo.model.SurveyUnit;
 import insee.stage.demo.repository.RequiredNomenclatureRepository;
 import insee.stage.demo.repository.SurveyUnitRepository;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,7 @@ public class SurveyUnitService {
         surveyUnitRepository.save(surveyUnit);
     }
 
-    public void updateSurveyUnitData(SurveyUnit surveyUnit, JSONObject data) {
+    public void updateSurveyUnitData(SurveyUnit surveyUnit, JSONArray data) {
         surveyUnit.setData(data);
         surveyUnitRepository.save(surveyUnit);
     }

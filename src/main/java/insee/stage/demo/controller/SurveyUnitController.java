@@ -7,6 +7,7 @@ import insee.stage.demo.model.Statedata;
 import insee.stage.demo.model.SurveyUnit;
 import insee.stage.demo.service.RequiredNomenclatureService;
 import insee.stage.demo.service.SurveyUnitService;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,7 +44,7 @@ public class SurveyUnitController {
 
     /** PUT data **/
     @PutMapping("/{id}/data")
-    public ResponseEntity updateDataById(@PathVariable String id, @RequestBody JSONObject data){
+    public ResponseEntity updateDataById(@PathVariable String id, @RequestBody JSONArray data){
         SurveyUnit surveyUnit = surveyUnitService.getSurveyUnitById(id);
         surveyUnitService.updateSurveyUnitData(surveyUnit, data);
         return ResponseEntity.ok().build();
