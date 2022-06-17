@@ -3,7 +3,9 @@ package insee.stage.demo.controller;
 import insee.stage.demo.model.Paradata;
 import insee.stage.demo.model.SurveyUnit;
 import insee.stage.demo.service.ParadataService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,8 @@ public class ParadataController {
     }
 
 
+
+
     @GetMapping
     public ResponseEntity<List<Paradata>> getAllParadata() {
         return ResponseEntity.ok(paradataService.getAllParadata());
@@ -29,9 +33,10 @@ public class ParadataController {
 
     /** POST paradata **/
 
-    @PostMapping
-    public ResponseEntity<Paradata> addParadata(@RequestBody Paradata paradata) {
+    @PostMapping()
+    public ResponseEntity.BodyBuilder addParadata(@RequestBody Paradata paradata) {
         paradataService.addParadata(paradata);
-        return (ResponseEntity<Paradata>) ResponseEntity.status(HttpStatus.CREATED);
+        return  ResponseEntity.status(HttpStatus.CREATED);
     }
+
 }
