@@ -3,7 +3,6 @@ package insee.stage.demo.repository;
 import insee.stage.demo.model.SurveyUnit;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
-import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 

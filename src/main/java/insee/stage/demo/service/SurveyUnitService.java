@@ -6,11 +6,11 @@ import insee.stage.demo.model.Statedata;
 import insee.stage.demo.model.SurveyUnit;
 import insee.stage.demo.repository.RequiredNomenclatureRepository;
 import insee.stage.demo.repository.SurveyUnitRepository;
+import org.bson.json.JsonObject;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
-import javax.xml.crypto.Data;
 import java.util.List;
 
 
@@ -36,7 +36,10 @@ public class SurveyUnitService {
         surveyUnitRepository.save(surveyUnit);
     }
 
-    public void updateSurveyUnitData(SurveyUnit surveyUnit, JSONArray data) {
+    public void addSurveyUnit(SurveyUnit surveyUnit) {surveyUnitRepository.save(surveyUnit);}
+
+
+    public void updateSurveyUnitData(SurveyUnit surveyUnit, JSONObject data) {
         surveyUnit.setData(data);
         surveyUnitRepository.save(surveyUnit);
     }

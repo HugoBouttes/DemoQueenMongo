@@ -1,7 +1,11 @@
 package insee.stage.demo.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import insee.stage.demo.util.CustomJSONObjectSerialize;
+import insee.stage.demo.util.PropertDocumentToJSONObjectConverter;
 import org.json.JSONObject;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.convert.ValueConverter;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import insee.stage.demo.model.InseeContext;
@@ -13,6 +17,8 @@ public class Metadata {
     private String id;
     @Field(name = "inseeContext")
     private InseeContext inseeContext;
+    @ValueConverter(PropertDocumentToJSONObjectConverter.class)
+    @JsonSerialize(using = CustomJSONObjectSerialize.class)
     @Field(name = "variables")
     private JSONObject variables;
 

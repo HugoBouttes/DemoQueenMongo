@@ -7,27 +7,19 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 
-@Document("required_nomenclature")
+@Document("required-nomenclatures")
 public class Required_nomenclatures {
 
-    @Id
-    private String id;
+
     @Field(name = "Liste de nomenclatures requises")
     private List <String> nomenclatures;
 
 
-    public Required_nomenclatures(String id, List<String> nomenclatures) {
-        this.id = id;
+    public Required_nomenclatures( List<String> nomenclatures) {
         this.nomenclatures = nomenclatures;
     }
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public List<String> getNomenclatures() {
         return nomenclatures;

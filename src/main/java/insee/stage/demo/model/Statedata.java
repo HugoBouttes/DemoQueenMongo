@@ -10,10 +10,7 @@ public class Statedata {
     private int currentPage;
 
 
-    public Statedata(State state, Date date, int currentPage) {
-        this.state = state;
-        this.date = date;
-        this.currentPage = currentPage;
+    public Statedata() {
     }
 
     public State getState() {

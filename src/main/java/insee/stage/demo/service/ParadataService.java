@@ -25,13 +25,14 @@ public class ParadataService {
 
 
     public List<Paradata> getAllParadata() {
-        Paradata matcherObject = new Paradata();
-        matcherObject.setIdSU("0");
-        JSONArray ja = new JSONArray();
-        matcherObject.setEvents(ja);
-        ExampleMatcher matcher = ExampleMatcher.matching();
-        Example<Paradata> example = Example.of(matcherObject,matcher);
-        return paradataRepository.findAll(example);
+        Example paradataexample = Example.of(new Paradata());
+//        Paradata matcherObject = new Paradata();
+//        matcherObject.setIdSU("0");
+//        JSONArray ja = new JSONArray();
+//        matcherObject.setEvents(ja);
+//        ExampleMatcher matcher = ExampleMatcher.matching();
+//        Example<Paradata> example = Example.of(matcherObject,matcher);
+        return paradataRepository.findAll(paradataexample);
     }
 
 

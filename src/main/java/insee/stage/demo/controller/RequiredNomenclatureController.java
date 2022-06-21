@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/required_nomenclature")
+@RequestMapping("/api/required-nomenclatures")
 public class RequiredNomenclatureController {
 
     private final RequiredNomenclatureService requiredNomenclatureService;
@@ -24,11 +24,11 @@ public class RequiredNomenclatureController {
 
 
     /** GET Required Nomenclature **/
-    @GetMapping("RequiredNomenclature")
+    @GetMapping()
     public ResponseEntity<List<Required_nomenclatures>> getAllReqNomenclature() {
         return ResponseEntity.ok(requiredNomenclatureService.getAllReqNomenclature());
     }
-    @GetMapping("campaign/{id}/RequiredNomenclature")
+    @GetMapping("/{id}")
     public ResponseEntity<Required_nomenclatures> getQuestionnaireById(@PathVariable String id) {
         return ResponseEntity.ok(requiredNomenclatureService.getRequiredNomenclatureById(id));
     }
