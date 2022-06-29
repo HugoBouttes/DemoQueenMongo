@@ -1,8 +1,12 @@
 package insee.stage.demo.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import insee.stage.demo.util.CustomJSONArraySerialize;
 import insee.stage.demo.util.CustomJSONObjectSerialize;
 import insee.stage.demo.util.PropertDocumentToJSONObjectConverter;
+import insee.stage.demo.util.PropertyArrayListToDocument;
+import lombok.NoArgsConstructor;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.convert.ValueConverter;
@@ -13,14 +17,14 @@ import insee.stage.demo.model.InseeContext;
 @Document("metadata")
 public class Metadata {
 
-    @Id
+    @Field(name = "id")
     private String id;
     @Field(name = "inseeContext")
     private InseeContext inseeContext;
-    @ValueConverter(PropertDocumentToJSONObjectConverter.class)
-    @JsonSerialize(using = CustomJSONObjectSerialize.class)
+    @ValueConverter(PropertyArrayListToDocument.class)
+    @JsonSerialize(using = CustomJSONArraySerialize.class)
     @Field(name = "variables")
-    private JSONObject variables;
+    private JSONArray variables;
 
     public String getId() {
         return id;
@@ -30,14 +34,16 @@ public class Metadata {
         this.id = id;
     }
 
-    private JSONObject metadata;
-
-    public Metadata(String Id,InseeContext inseeContext, JSONObject variables) {
-        this.id = Id;
-        this.inseeContext = inseeContext;
-        this.variables = variables;
+    public Metadata() {
     }
 
+    public JSONArray getVariables() {
+        return variables;
+    }
+
+    public void setVariables(JSONArray variables) {
+        this.variables = variables;
+    }
 
 
     public InseeContext getInseeContext() {
@@ -48,29 +54,8 @@ public class Metadata {
         this.inseeContext = inseeContext;
     }
 
-    public JSONObject getVariables() {
-        return variables;
-    }
 
-    public void setVariables(JSONObject variables) {
-        this.variables = variables;
-    }
 
-    public void addVariables(String name, String value){
-        this.variables.put("name", name);
-        this.variables.put("value", value);
-    }
 
-    public JSONObject getMetadata() {
-        return metadata;
-    }
 
-    public void setMetadata(JSONObject metadata) {
-        this.metadata = metadata;
-    }
-
-    public void addMetdata(JSONObject variables, InseeContext inseeContext){
-        this.metadata.put("inseeContext", inseeContext);
-        this.metadata.put("variables", variables);
-    }
 }

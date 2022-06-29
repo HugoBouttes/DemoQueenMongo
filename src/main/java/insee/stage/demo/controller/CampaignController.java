@@ -17,24 +17,24 @@ import java.util.List;
 @RequestMapping("/api/campaigns")
 public class CampaignController {
 
-    private final CampaignService campaignService;
-
-    public CampaignController(CampaignService campaignService){
-        this.campaignService = campaignService;
-    }
-
-
-    /** GET/ ALL campaign **/
-    @GetMapping
-    public ResponseEntity<List<Campaign>> getAllCampaign() {
-        return ResponseEntity.ok(campaignService.getAllCampaign());
-    }
-
-
-    /** GET/ api/campaign/idCampagn **/
-    @GetMapping("/{id}")
-    public ResponseEntity<Campaign> getCampaignById(@PathVariable String id) {
-        return ResponseEntity.ok(campaignService.getCampaignById(id));
-    }
+//    private final CampaignService campaignService;
+//
+//    public CampaignController(CampaignService campaignService){
+//        this.campaignService = campaignService;
+//    }
+//
+//
+//    /** GET/ ALL campaign **/
+//    @GetMapping
+//    public ResponseEntity<List<Campaign>> getAllCampaign() {
+//        return ResponseEntity.ok(campaignService.getAllCampaign());
+//    }
+//
+//
+//    /** GET/ api/campaign/idCampagn **/
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Campaign> getCampaignById(@PathVariable String id) {
+//        return ResponseEntity.ok(campaignService.getCampaignById(id));
+//    }
 
 }

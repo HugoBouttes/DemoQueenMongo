@@ -1,8 +1,7 @@
 package insee.stage.demo.controller;
 
 
-import insee.stage.demo.model.Questionnaire;
-import insee.stage.demo.model.Required_nomenclatures;
+import insee.stage.demo.model.RequiredNomenclatures;
 import insee.stage.demo.service.RequiredNomenclatureService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,11 +24,11 @@ public class RequiredNomenclatureController {
 
     /** GET Required Nomenclature **/
     @GetMapping()
-    public ResponseEntity<List<Required_nomenclatures>> getAllReqNomenclature() {
+    public ResponseEntity<List<RequiredNomenclatures>> getAllReqNomenclature() {
         return ResponseEntity.ok(requiredNomenclatureService.getAllReqNomenclature());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Required_nomenclatures> getQuestionnaireById(@PathVariable String id) {
+    public ResponseEntity<RequiredNomenclatures> getQuestionnaireById(@PathVariable String id) {
         return ResponseEntity.ok(requiredNomenclatureService.getRequiredNomenclatureById(id));
     }
 

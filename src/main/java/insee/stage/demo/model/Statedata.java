@@ -6,11 +6,20 @@ import insee.stage.demo.model.State;
 
 public class Statedata {
     private State state;
-    private Date date;
+    private String date;
     private int currentPage;
 
 
     public Statedata() {
+    }
+
+    @Override
+    public String toString() {
+        return "Statedata{" +
+                "state=" + state +
+                ", date=" + date +
+                ", currentPage=" + currentPage +
+                '}';
     }
 
     public State getState() {
@@ -21,11 +30,11 @@ public class Statedata {
         this.state = state;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

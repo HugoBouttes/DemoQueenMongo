@@ -22,30 +22,28 @@ import java.lang.reflect.Array;
 @Document(collection = "paradata")
 public class Paradata {
 
-    @Id
-    private String idSU;
-    @ValueConverter(PropertDocumentToJSONArrayConverter.class)
-    @JsonSerialize(using = CustomJSONArraySerialize.class)
+    @ValueConverter(PropertDocumentToJSONObjectConverter.class)
+    @JsonSerialize(using = CustomJSONObjectSerialize.class)
     @Field(name = "events")
-    private JSONArray events;
+    private JSONObject events;
+
 
 
     public Paradata() {
     }
 
-    public String getIdSU() {
-        return idSU;
+    @Override
+    public String toString() {
+        return "Paradata{" +
+                "events=" + events +
+                '}';
     }
 
-    public void setIdSU(String idSU) {
-        this.idSU = idSU;
-    }
-
-    public JSONArray getEvents() {
+    public JSONObject getEvents() {
         return events;
     }
 
-    public void setEvents(JSONArray events) {
+    public void setEvents(JSONObject events) {
         this.events = events;
     }
 }

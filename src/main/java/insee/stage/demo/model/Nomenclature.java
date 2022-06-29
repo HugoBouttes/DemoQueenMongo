@@ -1,10 +1,7 @@
 package insee.stage.demo.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import insee.stage.demo.util.CustomJSONArraySerialize;
-import insee.stage.demo.util.CustomJSONObjectSerialize;
-import insee.stage.demo.util.PropertDocumentToJSONArrayConverter;
-import insee.stage.demo.util.PropertDocumentToJSONObjectConverter;
+import insee.stage.demo.util.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.data.annotation.Id;
@@ -14,12 +11,12 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "nomenclature")
 public class Nomenclature {
-    @Id
+
+    @Field(name = "id")
     private String id;
-//    @ValueConverter(PropertDocumentToJSONArrayConverter.class)
-//    @JsonSerialize(using = CustomJSONArraySerialize.class)
-//of type class com.mongodb.BasicDBList into an instance of class org.json.JSONArray!
-// Implement a custom Converter<class com.mongodb.BasicDBList, class org.json.JSONArray>
+//  @ValueConverter(PropertDocumentToJSONArrayConverter.class)
+    @JsonSerialize(using = CustomJSONArraySerialize.class)
+    @ValueConverter(BasicDBListToJSONArrayConverter.class)
     @Field(name = "nomenclature")
     private JSONArray nomenclature;
 

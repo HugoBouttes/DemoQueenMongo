@@ -24,7 +24,7 @@ public class NomenclatureService {
 
     public Nomenclature getNomenclatureById(String id){
         return nomenclatureRepository.findById(id).orElseThrow(() -> new RuntimeException(
-                String.format("Cannot fin survey units by Id %s", id)));
+                String.format("Cannot find nomenclature by Id %s", id)));
     }
 }
 
